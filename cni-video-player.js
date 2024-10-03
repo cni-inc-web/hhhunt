@@ -14,11 +14,11 @@
  }
 
  function onPlayerReady(event) {
-   // Add event listeners to all divs with class 'time-button'
+   // Add event listeners to all divs with class 'play-video-button'
    var buttons = document.querySelectorAll('.play-video-button');
    buttons.forEach(function(button) {
      button.addEventListener('click', function() {
-       // Get the timestamp from the data-timestamp attribute
+       // Get the timestamp from the startmarker attribute
        var timestamp = parseInt(this.getAttribute('startmarker'));
        player.seekTo(timestamp);
      });
