@@ -31,5 +31,5 @@ document.addEventListener("DOMContentLoaded", function () {
         processCMSList(".highlight_list", ".highlight_item");
 
         console.log("Script completed.");
-    }, 500); // Delay for Webflow CMS content to load
+    }, 250); // Delay for Webflow CMS content to load
 });
