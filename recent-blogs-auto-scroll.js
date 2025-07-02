@@ -1,58 +1,80 @@
-  $(document).ready(function () {
-    let counter = 1;
-    const time_to_scroll = 5000;
-    const animationSpeed = 1000;
-    const $wrapper = $(".recent-posts-collection-list-wrapper");
-    const $items = $(".recent-posts_feed-wrapper .recent-posts_item");
-    const elementCount = $items.length;
 
-    // Assign IDs to each item for reference
-    $items.each(function (index) {
-      $(this).attr("id", "row_" + (index + 1));
+var counter = 1;
+var totalHeight = 0;
+var delta = 0;
+$(document).ready(function () {
+
+    var time_to_scroll = 5000;
+    var animationSpeed = 1000;
+
+    var elementCount = $(".recent-posts_feed-wrapper").children().length;
+    var elementHeight = $(".recent-posts_feed-wrapper").height()
+    $(".recent-posts_feed-wrapper .recent-posts_item").each(function () {
+
+        $(this).attr('id', "row_" + counter)
+        counter++;
     });
 
-    // Start the interval
-    let moveInterval = setInterval(moveDiv, time_to_scroll);
 
-    // Pause on hover
-    $wrapper.hover(
-      function () {
-        clearInterval(moveInterval);
-      },
-      function () {
-        moveInterval = setInterval(moveDiv, time_to_scroll);
-      }
+    var moveInterval = setInterval(moveDiv, time_to_scroll);
+
+    // stops animation on hover
+    $(".recent-posts-collection-list-wrapper").hover(
+        function () {
+            clearInterval(moveInterval);
+            console.log("clearInterval");
+
+
+        },
+        function () {
+
+            moveInterval = setInterval(moveDiv, time_to_scroll);
+        }
     );
 
-    // Scroll to the top on resize
-    $(window).resize(function () {
-      counter = 1;
-      $wrapper.scrollTop(0);
-    });
+    counter = 1;
 
-    // Mouse wheel interaction overrides scroll
-    $wrapper.on("mousewheel", function (e) {
-      clearInterval(moveInterval);
-      // Match scroll position to nearest item
-      const offset = $("#row_1").position().top - $wrapper.position().top;
-      $wrapper.scrollTop(Math.abs(offset));
-    });
 
-    // Move to the next item in the list
     function moveDiv() {
-      if (counter > elementCount) {
-        counter = 1;
-      }
 
-      const $target = $("#row_" + counter);
-      $wrapper.animate(
-        {
-          scrollTop: $target.position().top
-        },
-        animationSpeed,
-        function () {
-          counter++;
+        if (counter > elementCount - 1) {
+            counter = 1;
+            totalHeight = 0;
         }
-      );
+        if (totalHeight > elementHeight) {
+            counter = 1;
+            totalHeight = 0;
+        }
+
+
+        $('.recent-posts-collection-list-wrapper').animate({
+            scrollTop: totalHeight
+        }, animationSpeed, function () {
+            totalHeight += $("#row_" + counter).outerHeight(true);   // true ➜ include margin
+            counter++;
+
+            console.log($('#row_1').position().top);
+            console.log($('.recent-posts-collection-list-wrapper').position().top);
+
+        });
+        return false;
+
+
     }
-  });
+    $(window).resize(function () {
+        counter = 1;
+        totalHeight = 0;
+    });
+
+    $('.recent-posts-collection-list-wrapper').bind('mousewheel', function (e) {
+        clearInterval(moveInterval);
+
+        var offset = ($('#row_1').position().top - $('.recent-posts-collection-list-wrapper').position().top) * -1.1
+        console.log("offset: " + offset);
+
+        totalHeight = offset;
+
+
+    });
+
+});
