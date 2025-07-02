@@ -1,4 +1,3 @@
-
 var counter = 1;
 var totalHeight = 0;
 var delta = 0;
