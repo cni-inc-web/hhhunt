@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.disconnect();
             }
         },
-        { threshold: 0.1 } // fire when ≥10 % visible
+        { threshold: 0.2 } // fire when ≥10 % visible
     );
 
     observer.observe(trigger);
