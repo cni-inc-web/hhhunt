@@ -1,3 +1,5 @@
+/* Version for Post page that changes "LIKES" to "LIKE" if it's 1 */
+
 (function () {
   // 🔧 EDIT THIS if your Worker URL changes
   const API_BASE = 'https://corp-blog-likes.lively-darkness-6eb8.workers.dev';
