@@ -1,3 +1,5 @@
+/* Version for Home page w/o dynamic "LIKES" text*/
+
 (function () {
   const API_BASE = 'https://corp-blog-likes.lively-darkness-6eb8.workers.dev';
 
