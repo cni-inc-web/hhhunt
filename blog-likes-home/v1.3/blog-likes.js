@@ -1,4 +1,4 @@
-/* Version for Home page w/ Finsweet Load More support (no dynamic LIKE/LIKES text) */
+/* Version for non-post page w/ Finsweet Load More support (no dynamic LIKE/LIKES text) */
 
 (function () {
   const API_BASE = 'https://corp-blog-likes.lively-darkness-6eb8.workers.dev';
