@@ -18,8 +18,8 @@
           (el.dataset.wTab || el.textContent.trim()) === savedTabId
         );
       } else if (isVirginia) {
-        // No saved tab, and we're on the Virginia page → default to tab #5 (6th tab)
-        targetTab = tabLinks[5] || null;
+        // No saved tab, and we're on the Virginia page → default to tab #4 (5th tab)
+        targetTab = tabLinks[4] || null;
       }
 
       // Activate the target tab, if it's not already active
