@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         display: inline-flex;
         align-items: center;
         gap: 0.35em; /* spacing between icon and text */
+        justify-content: flex-start;
+        align-items: flex-start;
       }
       #rte a.yt-link > svg {
         flex: 0 0 auto;
